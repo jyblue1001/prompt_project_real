@@ -15,7 +15,7 @@ https://github.com/JayMehtaUK/image-classifier/tree/main
 
 1. 제 깃허브 리포지토리를 본인의 컴퓨터의 VScode에서 clone하고,
 
-2. 파이썬 가상환경을 만들어주시고,(해도 되고 안해도 되긴 해요)
+2. 불러오신 리포지토리 경로 안에 파이썬 가상환경을 만들어주시고,(해도 되고 안해도 되긴 해요)
 
 3. 터미널을 키시고 아래에 나와있는 pip를 설치해주세요.
 pip install -r requirements.txt (아마 이 pip는 다 설치가 안될 수도 있는데 상관없고, 되는데 까지만 설치해도 프로그램이 실행 돼요)
