@@ -18,6 +18,8 @@ def predict():
     image = cv2.imread(image_path)  # OpenCV를 사용하여 저장된 이미지 읽기
     assert image is not None  # 이미지가 성공적으로 읽혔는지 확인
 
+    print("image has been passed on")
+
     results = m.detect_emotion_for_single_frame(image)  # RMN 모델을 사용하여 이미지에서 감정 감지 수행
 
     # 결과 처리
@@ -30,10 +32,19 @@ def predict():
             max_emotion = emotion  # 최고 확률 감정 업데이트
             max_score = score  # 최고 확률 업데이트
 
+    print("calaculation done")
+
     # 결과 문자열 생성
     result_str = f"{max_emotion}: {max_score:.2f}%\n" if max_emotion else "감정이 감지되지 않았습니다"
+    
+    print("now passing the result to the html file")
 
-    return render_template('index.html', prediction=result_str)  # 예측 결과와 함께 HTML 템플릿 렌더링
+    # return render_template('index.html', prediction=result_str)  # 예측 결과와 함께 HTML 템플릿 렌더링
+    
+    """
+    기존의 위의 코드가 아래처럼 바뀌었습니다.
+    """
+    return result_str
 
 if __name__ == '__main__':  # 스크립트가 직접 실행되었는지 확인
     app.run(port=3000, debug=True)  # 디버그 모드에서 포트 3000에서 Flask 애플리케이션 실행
