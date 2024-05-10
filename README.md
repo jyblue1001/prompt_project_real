@@ -1,6 +1,9 @@
 # 12:15 PM 5/10/2024
 ## 표정에 대한 확률이 여러개 나타나는 것을 수정했습니다.
 
+
+
+
 아래의 유튜브 비디오를 참고해서 웹페이지를 만들었습니다.
 https://www.youtube.com/watch?v=d1DKT2xk_dM
 
@@ -18,7 +21,7 @@ https://github.com/JayMehtaUK/image-classifier/tree/main
 
 3. 터미널을 키시고 아래에 나와있는 pip를 설치해주세요.
 pip install -r requirements.txt (아마 이 pip는 다 설치가 안될 수도 있는데 상관없고, 되는데 까지만 설치해도 프로그램이 실행 돼요)
-pip install Flask
+pip install flask
 pip install keras
 pip install rmn
 
