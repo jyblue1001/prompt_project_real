@@ -4,7 +4,7 @@
 <br/><br/>
 
 아래의 유튜브 비디오를 참고해서 웹페이지를 만들었습니다.
-https://www.youtube.com/watch?v=d1DKT2xk_dM
+https://www.youtube.com/watch?v=0nr6TPKlrN0
 
 유튜브 해당 코드의 깃허브 리포지포리
 https://github.com/JayMehtaUK/image-classifier/tree/main
