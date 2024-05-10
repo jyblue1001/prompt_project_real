@@ -21,21 +21,22 @@ def predict():
     results = m.detect_emotion_for_single_frame(image)  # RMN 모델을 사용하여 이미지에서 감정 감지 수행
 
     # 결과 처리
-    emotion_scores = {}  # 감정 점수를 저장할 딕셔너리 생성
+    max_emotion = None  # 최고 확률 감정 초기화
+    max_score = -1  # 최고 확률 초기화
     for result in results:  # 결과에서 감지된 감정 반복
         emotion = result['emo_label']  # 결과에서 감정 레이블 가져오기
         score = result['emo_proba'] * 100  # 감정 확률을 백분율로 변환
-        if emotion not in emotion_scores or score > emotion_scores[emotion]:  # 감정 점수가 기존 점수보다 높은지 확인
-            emotion_scores[emotion] = score  # 딕셔너리에 감정 점수 업데이트
+        if score > max_score:  # 현재 감정의 확률이 최고 확률보다 높은지 확인
+            max_emotion = emotion  # 최고 확률 감정 업데이트
+            max_score = score  # 최고 확률 업데이트
 
     # 결과 문자열 생성
-    result_str = ""  # 결과를 저장할 빈 문자열 초기화
-    for emotion, score in emotion_scores.items():  # 딕셔너리에서 감정 점수 반복
-        result_str += f"{emotion}: {score:.2f}%\n"  # 감정과 점수를 형식화하고 결과 문자열에 추가
+    result_str = f"{max_emotion}: {max_score:.2f}%\n" if max_emotion else "감정이 감지되지 않았습니다"
 
     return render_template('index.html', prediction=result_str)  # 예측 결과와 함께 HTML 템플릿 렌더링
 
 if __name__ == '__main__':  # 스크립트가 직접 실행되었는지 확인
     app.run(port=3000, debug=True)  # 디버그 모드에서 포트 3000에서 Flask 애플리케이션 실행
+
 
 # 구글 크롬 열고 "http://localhost:3000/" 입력하시면 돼요
