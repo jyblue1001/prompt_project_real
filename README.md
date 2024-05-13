@@ -34,10 +34,13 @@ https://github.com/JayMehtaUK/image-classifier/tree/main
 3. 터미널을 키시고 아래에 나와있는 pip를 설치해주세요.
 <br/>
 pip install -r requirements.txt (아마 이 pip는 다 설치가 안될 수도 있는데 상관없고, 되는데 까지만 설치해도 프로그램이 실행 돼요)
-<br/>
+<br/><br/>
 pip install flask
+<br/>
 pip install keras
+<br/>
 pip install rmn
+<br/><br/>
 
 5. 위의 pip 설치가 다 끝나고 나면, 다시 터미널에 "python app.py"를 입력해서 실행하면,
 
