@@ -7,8 +7,8 @@
 
 ---
 ### 8:04 PM 5/13/2024
-### - app.py에서 return 구문 수정
-### - "script.js" 파일에서 새로운 함수 추가
+### - app.py 에서 return 구문 수정
+### - script.js 에서 새로운 함수 추가
 ### - 그 외(index.html 등등)는 변경 사함 없습니다
 ---
 
