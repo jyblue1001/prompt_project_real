@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmojiFaceCon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
+
+
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #randomEmoji {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+
+        #prediction {
+            font-weight: bold;
+            font-size: 30px;
+            color: #007bff;
+        }
+        
+        #video {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width: 320px;
+            height: 240px;
+        }
+
+        #photo {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width: 320px;
+            height: 240px;
+        }
+
+        #canvas {
+            display: none;      
+        }
+
+        .camera {
+            width: 340px;
+            display: inline-block;
+        }
+
+        .output {
+            width: 340px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        .btn {
+            border: none;
+            color: rgb(0, 0, 0);
+            background-color: #008CBA; /* Blue */
+            padding: 200px 400px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .rand_emoji_btn {
+            background-color: white;
+            color: black;
+            border: 2px solid #04AA6D;
+        }
+
+        .rand_emoji_btn:hover {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .predict_btn {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .predict_btn:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        #startbutton {
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            bottom: 32px;
+            background-color: rgb(0 150 0 / 50%);
+            border: 1px solid rgb(255 255 255 / 70%);
+            box-shadow: 0px 0px 1px 2px rgb(0 0 0 / 20%);
+            font-size: 14px;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            color: rgb(255 255 255 / 100%);
+            }
+
+            .contentarea {
+            font-size: 16px;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            width: 760px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>EmojiFaceCon</h1>
+        
+        <!-- Display random emojis -->
+        <div id="randomEmoji" class="text-center"></div>
+
+        <div class="camera">
+            <video id="video">Video stream not available.</video>
+            <button id="startbutton">Take photo</button>
+          </div>
+        
+        <canvas id="canvas"> </canvas>
+                
+        <div class="output">
+            <img id="photo" type="file" alt="The screen capture will appear in this box." />
+        </div>
+        
+        <button id="btn rand_emoji_btn" type="button" onclick="displayRandomEmoji()">Random Emoji</button>
+        <button id="btn predict_btn" type="button" onclick="uploadImage()">Predict Image</button>
+        
+
+        <div id="emojiResult" class="text-center" style="display: none;">
+            <p>Your facial expression is <span id="prediction"></span></p>
+        </div>
+
+    </div>
+    
+    <script src="{{ url_for('static', filename='script2.js') }}"></script> 
+</body>
+</html>

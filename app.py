@@ -2,18 +2,20 @@ from flask import Flask, render_template, request  # 필요한 모듈 가져오�
 import cv2  # 이미지 처리를 위한 OpenCV 라이브러리 가져오기
 from rmn import RMN  # 감정 감지를 위한 RMN 모델 가져오기
 
+
 app = Flask(__name__)  # Flask 애플리케이션 인스턴스 생성
 m = RMN()  # 감정 감지를 위해 RMN 모델 인스턴스화
 
 @app.route('/', methods=['GET'])  # 루트 URL에 대한 GET 요청을 처리하기 위한 라우트 정의
 def hello_world():
-    return render_template('index.html')  # 루트 URL이 GET 방식으로 접근될 때 HTML 템플릿 렌더링
+    return render_template('index2.html')  # 루트 URL이 GET 방식으로 접근될 때 HTML 템플릿 렌더링
 
 @app.route('/', methods=['POST'])  # 루트 URL에 대한 POST 요청을 처리하기 위한 라우트 정의
 def predict():
+    print("predict function called")
     imagefile = request.files['imagefile']  # 요청에서 업로드된 이미지 파일 가져오기
     image_path = "./images/" + imagefile.filename  # 업로드된 이미지를 저장할 파일 경로 생성
-    imagefile.save(image_path)  # 업로드된 이미지를 지정된 파일 경로에 저장
+    imagefile.save(image_path)  # 업로드된 이미지를 지정된 파일 경로에 저장s
 
     image = cv2.imread(image_path)  # OpenCV를 사용하여 저장된 이미지 읽기
     assert image is not None  # 이미지가 성공적으로 읽혔는지 확인
@@ -38,12 +40,12 @@ def predict():
     result_str = f"{max_emotion}: {max_score:.2f}%\n" if max_emotion else "감정이 감지되지 않았습니다"
     
     print("now passing the result to the html file")
+    print(len(result_str))
 
-    # return render_template('index.html', prediction=result_str)  # 예측 결과와 함께 HTML 템플릿 렌더링
-    
-    """
-    기존의 위의 코드가 아래처럼 바뀌었습니다.
-    """
+    print(f"result_str value: {result_str}")
+
+    # return render_template('index.html', prediction=result_str)
+
     return result_str
 
 if __name__ == '__main__':  # 스크립트가 직접 실행되었는지 확인

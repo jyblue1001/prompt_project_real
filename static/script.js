@@ -1,31 +1,31 @@
 // script.js
 
 function displayRandomEmoji() {
-    var emojis = ['😊', '😄', '😁', '😆', '😅', '🤣', '😂', '😇', '😍', '😘'];
-    var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-  
-    var emojiResultElement = document.getElementById('randomEmoji'); // 이모지를 표시할 요소 선택
-    emojiResultElement.innerText = "랜덤 이모지는 " + randomEmoji + "입니다.";
+  var emojis = ['😊', '😄', '😁', '😆', '😅', '🤣', '😂', '😇', '😍', '😘'];
+  var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+  var emojiResultElement = document.getElementById('randomEmoji'); // 이모지를 표시할 요소 선택
+  emojiResultElement.innerText = "랜덤 이모지는 " + randomEmoji + "입니다.";
 }
-  
+
 window.onload = function() {
-    displayRandomEmoji();
+  displayRandomEmoji();
 };
 
 // 이미지 미리보기 함수
 function previewImage(event) {
-    var fileInput = document.getElementById('fileInput');
-    var file = fileInput.files[0];
-    var reader = new FileReader();
-    
-    reader.onload = function() {
-        var output = document.getElementById('imagePreview');
-        output.innerHTML = '<img src="' + reader.result + '" style="max-width: 300px; max-height: 300px;">';
-    };
-    
-    if (file) {
-        reader.readAsDataURL(file);
-    }
+  var fileInput = document.getElementById('fileInput');
+  var file = fileInput.files[0];
+  var reader = new FileReader();
+  
+  reader.onload = function() {
+      var output = document.getElementById('imagePreview');
+      output.innerHTML = '<img src="' + reader.result + '" style="max-width: 300px; max-height: 300px;">';
+  };
+  
+  if (file) {
+      reader.readAsDataURL(file);
+  }
 }
 
 
@@ -34,30 +34,30 @@ function previewImage(event) {
 
 // 이미지 업로드 함수
 function uploadImage() {
-    var formElement = document.getElementById('uploadForm');
-    var formData = new FormData(formElement);
+  var formElement = document.getElementById('uploadForm');
+  var formData = new FormData(formElement);
 
-    // 서버로 POST 요청 보내기
-    fetch('/', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // 필요한 경우 서버 응답 처리
-        console.log(data); // 이 줄은 딱히 필요한 부분은 아닙니다.
+  // 서버로 POST 요청 보내기
+  fetch('/', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+      // 필요한 경우 서버 응답 처리
+      console.log(data); // 이 줄은 딱히 필요한 부분은 아닙니다.
 
-        // emojiResult div 표시 및 예측 텍스트 설정
-        var emojiResultPredict = document.getElementById('emojiResult');
-        var predictionElement = document.getElementById('prediction');
-        predictionElement.innerText = data; // 데이터가 예측 결과라고 가정
+      // emojiResult div 표시 및 예측 텍스트 설정
+      var emojiResultPredict = document.getElementById('emojiResult');
+      var predictionElement = document.getElementById('prediction');
+      predictionElement.innerText = data; // 데이터가 예측 결과라고 가정
 
-        emojiResultPredict.style.display = 'block'; // emojiResult div 표시
-    })
-    .catch(error => { // 이 catch도 기능적으로 딱히 필요한 부분은 아닙니다.
-        // 발생한 오류 처리
-        console.error('에러:', error);
-    });
+      emojiResultPredict.style.display = 'block'; // emojiResult div 표시
+  })
+  .catch(error => { // 이 catch도 기능적으로 딱히 필요한 부분은 아닙니다.
+      // 발생한 오류 처리
+      console.error('에러:', error);
+  });
 }
 
 /* 혹시나 해서 gpt로 뽑은 설명을 첨부해놓을게요
